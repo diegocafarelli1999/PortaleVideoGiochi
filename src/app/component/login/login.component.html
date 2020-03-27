@@ -1,0 +1,16 @@
+<form (ngSubmit)="login()">
+    <div class="form-group">
+        <div>
+            <p class="text">USERNAME</p>
+            <input [(ngModel)]="username" placeholder="INSERIRE L'USERNAME:" name="username" required #usernameControl= "ngModel">
+            <p *ngIf="usernameControl.invalid && usernameControl.touched"  >username obbligatoria</p>
+        </div>
+        <div>
+            <p>PASSWORD</p>
+            <input (keyup.enter)="login()" [(ngModel)]="password" placeholder="INSERIRE LA PASSWORD:" name="password" required>
+
+        </div>
+        <button type="submit"> Submit </button>
+
+    </div>
+</form>
