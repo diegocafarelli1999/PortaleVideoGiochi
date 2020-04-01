@@ -1,16 +1,20 @@
-<form (ngSubmit)="login()">
+<form (ngSubmit)="login()" #myForm=ngForm>
     <div class="form-group">
         <div>
             <p class="text">USERNAME</p>
-            <input [(ngModel)]="username" placeholder="INSERIRE L'USERNAME:" name="username" required #usernameControl= "ngModel">
-            <p *ngIf="usernameControl.invalid && usernameControl.touched"  >username obbligatoria</p>
+            <input [(ngModel)]="username" placeholder="INSERIRE L'USERNAME:" name="username" required
+                #usernameControl="ngModel">
+            <p *ngIf="usernameControl.invalid && usernameControl.touched">L'username è obbligatoria</p>
         </div>
         <div>
             <p>PASSWORD</p>
-            <input (keyup.enter)="login()" [(ngModel)]="password" placeholder="INSERIRE LA PASSWORD:" name="password" required>
-
+            <input (keyup.enter)="login()" [(ngModel)]="password" placeholder="INSERIRE LA PASSWORD:" name="password"
+                required #passwordControl="ngModel">
+            <p *ngIf="passwordControl.invalid && passwordControl.touched">La password è obbligatoria</p>
         </div>
-        <button type="submit"> Submit </button>
+        <button [disabled]="myForm.form.invalid" type="submit"> Submit </button>
+        
+        
 
     </div>
 </form>
