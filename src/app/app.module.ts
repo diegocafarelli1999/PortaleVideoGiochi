@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { LoginGuardService } from './service/login-guard.service';
 import { from } from 'rxjs';
+import { RegistrationComponent } from './component/registration/registration.component';
 const appRoutes: Routes = [
 
   { path: 'home', component: HomeComponent, canActivate: [LoginGuardService] },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     GamesListComponent,
     GameDetailComponent,
     EditGameComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
 
   ],
   imports: [

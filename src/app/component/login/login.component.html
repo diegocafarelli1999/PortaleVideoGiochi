@@ -1,20 +1,19 @@
-<form (ngSubmit)="login()" #myForm=ngForm>
+<form [formGroup]="loginForm">
     <div class="form-group">
         <div>
             <p class="text">USERNAME</p>
-            <input [(ngModel)]="username" placeholder="INSERIRE L'USERNAME:" name="username" required
-                #usernameControl="ngModel">
-            <p *ngIf="usernameControl.invalid && usernameControl.touched">L'username è obbligatoria</p>
+            <input  placeholder="INSERIRE L'USERNAME:" name="username" required formControlName='username'>
+            <div *ngIf="usernameControl.invalid && usernameControl.dirty ">
+                <span>Il campo USERNAME è obbligartorio. Inserire un nome tra i 5 e i 10 cararreri nome per accedere.</span>
+            </div> 
         </div>
         <div>
             <p>PASSWORD</p>
-            <input (keyup.enter)="login()" [(ngModel)]="password" placeholder="INSERIRE LA PASSWORD:" name="password"
-                required #passwordControl="ngModel">
-            <p *ngIf="passwordControl.invalid && passwordControl.touched">La password è obbligatoria</p>
-        </div>
-        <button [disabled]="myForm.form.invalid" type="submit"> Submit </button>
+            <input (keyup.enter)="login()"  placeholder="INSERIRE LA PASSWORD:" name="password" required formControlPassword='password' >
+            <div *ngIf="usernameControl.invalid && usernameControl.dirty ">
+                <span>Il campo PASSWORD è obbligartorio. Inserire una password di minimo 5 caratteri per accedere.</span></div>
+            </div>
         
-        
-
-    </div>
+        <button [disabled] type="submit"> Submit </button>
+   </div>
 </form>
